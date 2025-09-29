@@ -1,0 +1,9 @@
+theme = kanagawa-dragon
+font-family = JetBrainsMono Nerd Font
+font-size = 18
+background-blur-radius = 50
+background-opacity = 0.8
+mouse-hide-while-typing = true
+window-decoration = true
+window-padding-x = 8
+macos-option-as-alt = true

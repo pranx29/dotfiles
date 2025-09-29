@@ -1,0 +1,105 @@
+#!/bin/sh
+
+source "$CONFIG_DIR/colors.sh"
+
+# Bar appearance
+sketchybar --bar position=top \
+           height=32 \
+           blur_radius=40 \
+           y_offset=4 \
+           margin=12 \
+           corner_radius=12 \
+           padding_left=0 \
+           padding_right=0 \
+           color=0x20000000 \
+           border_color=0x20FFFFFF \
+           border_width=1 \
+           shadow=on \
+           shadow.color=0x80000000 \
+           shadow.distance=8 \
+           shadow.angle=270
+
+# Default item properties
+sketchybar --default \
+           padding_left=5 \
+           padding_right=5 \
+           icon.font="SF Pro:Semibold:14.0" \
+           label.font="SF Pro:Semibold:12.0s" \
+           icon.color=$WHITE \
+           label.color=$WHITE \
+           icon.padding_left=8 \
+           icon.padding_right=4 \
+           label.padding_left=4 \
+           label.padding_right=8 \
+           background.color=$ITEM_BG_COLOR \
+           background.corner_radius=5 \
+           background.height=24
+
+# Left side:
+# Workspaces
+sketchybar --add event aerospace_workspace_change
+
+for sid in $(aerospace list-workspaces --all); do
+  sketchybar --add item space.$sid left \
+             --subscribe space.$sid aerospace_workspace_change \
+             --set space.$sid \
+             icon=$sid \
+             label.font="sketchybar-app-font:Regular:16.0" \
+             label.padding_right=20 \
+             label.y_offset=-1 \
+             click_script="aerospace workspace $sid" \
+             script="$CONFIG_DIR/scripts/aerospace.sh $sid"
+done
+
+# Separator
+sketchybar --add item space_separator left \
+           --set space_separator \
+           icon="􀆊" \
+           icon.color=$ACCENT_COLOR \
+           icon.padding_left=4 \
+           label.drawing=off \
+           background.drawing=off \
+           --subscribe space_separator aerospace_workspace_change
+
+# Front app
+sketchybar --add item front_app left \
+           --set front_app \
+           icon.drawing=off \
+           label.padding_left=8 \
+           label.padding_right=8 \
+           background.corner_radius=8 \
+           background.color=$ITEM_BG_COLOR \
+           label.color=$LABEL_COLOR \
+           script="$CONFIG_DIR/scripts/front_app.sh" \
+           --subscribe front_app front_app_switched
+
+# Right side:
+# Time & Date
+sketchybar --add item calendar right \
+           --set calendar update_freq=30 \
+           icon.padding_left=0 \
+           background.color=0x00000000 \
+           script="$CONFIG_DIR/scripts/calendar.sh"
+
+# Battery
+sketchybar --add item battery right \
+           --set battery update_freq=120 \
+                  background.color=0x00000000 \
+                  script="$CONFIG_DIR/scripts/battery.sh" \
+           --subscribe battery system_woke power_source_change
+
+# CPU
+sketchybar --add item cpu right \
+           --set cpu update_freq=2 \
+                  icon=􀧓 \
+                  background.color=0x00000000 \
+                  script="$CONFIG_DIR/scripts/cpu.sh"
+                  
+# Volume
+sketchybar --add item volume right \
+           --set volume background.color=0x00000000 \
+                       script="$CONFIG_DIR/scripts/volume.sh" \
+           --subscribe volume volume_change
+
+# Force all scripts to run the first time
+sketchybar --update

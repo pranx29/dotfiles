@@ -1,0 +1,169 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  // Theme & Appearance
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Kanagawa Dragon"
+  },
+  "icon_theme": "Symbols Icon Theme",
+  "ui_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_size": 15,
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_size": 14,
+
+  // Features
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+
+  // Editor Behavior
+  "hide_mouse": "on_typing_and_movement",
+  "tab_size": 4,
+  "scroll_beyond_last_line": "off",
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  },
+  "scrollbar": {
+    "show": "never"
+  },
+  "format_on_save": "off",
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 500
+    }
+  },
+
+  // Vim Setup
+  "vim_mode": true,
+  "vim": {
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": true,
+    "default_mode": "normal"
+  },
+
+  // Panels & UI Layout
+  "project_panel": {
+    "dock": "right"
+  },
+  "terminal": {
+    "font_family": "JetBrainsMono Nerd Font",
+    "font_size": 14,
+    "dock": "bottom",
+    "option_as_meta": true,
+    "toolbar": {
+      "breadcrumbs": false
+    },
+    "cursor_shape": "bar",
+    "blinking": "on"
+  },
+  "debugger": {
+    "dock": "bottom"
+  },
+  "git_panel": {
+    "dock": "right"
+  },
+
+  // Hide buttons
+  "collaboration_panel": {
+    "button": false
+  },
+  "notification_panel": {
+    "button": false
+  },
+  "outline_panel": {
+    "button": false
+  },
+  "search": {
+    "button": false
+  },
+  "global_lsp_settings": {
+    "button": false
+  },
+
+  // UI Elements
+  "tab_bar": {
+    "show_nav_history_buttons": false,
+    "show_tab_bar_buttons": false
+  },
+  "preview_tabs": {
+    "enabled": false
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": false
+  },
+  "title_bar": {
+    "show_branch_icon": true,
+    "show_sign_in": false,
+    "show_user_picture": false
+  },
+  "tabs": {
+    "git_status": true
+  },
+
+  // AI & Assistant
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "claude-3.7-sonnet"
+    },
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4"
+    },
+    "single_file_review": false,
+    "always_allow_tool_actions": true,
+    "play_sound_when_agent_done": true,
+    "default_profile": "minimal",
+    "dock": "left"
+  },
+
+  // Diagnostics
+  "diagnostics": {
+    "include_warnings": true,
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 150,
+      "padding": 4,
+      "min_column": 0,
+      "max_severity": null
+    }
+  },
+
+  // Privacy & Telemetry
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+
+  // Git Integration
+  "git": {
+    "inline_blame": {
+      "enabled": true
+    }
+  },
+
+  // Language Settings
+  "languages": {
+    "PHP": {
+      "language_servers": ["intelephense", "!phpactor", "..."],
+      "formatter": "language_server"
+    },
+    "JavaScript": {
+      "tab_size": 2
+    },
+    "JSONC": {
+      "tab_size": 2
+    }
+  }
+  // "disable_ai": true
+}

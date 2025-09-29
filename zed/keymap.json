@@ -1,0 +1,150 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  // === WORKSPACE ===
+  {
+    "context": "Workspace",
+    "bindings": {}
+  },
+  // === EDITOR CONTEXTS ===
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-l": "editor::ToggleFold"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "j k": "vim::NormalBefore"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      ":": "command_palette::Toggle",
+      "=": "editor::FormatSelections"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      // File operations
+      "space f f": "file_finder::Toggle",
+      "space f b": "tab_switcher::Toggle",
+      "space f g": "pane::DeploySearch",
+      "space f r": "projects::OpenRecent",
+      // Panel navigation
+      "space e": "project_panel::ToggleFocus",
+      "space g g": "git_panel::ToggleFocus",
+      "space t t": "terminal_panel::ToggleFocus",
+      "space a a": "agent::ToggleFocus",
+      // Git operations
+      "space g d": "editor::ToggleSelectedDiffHunks",
+      "space g b ": "git::Branch",
+
+      "space s r": "buffer_search::DeployReplace",
+      "space =": "editor::Format"
+    }
+  },
+  {
+    "context": "!Editor && !Terminal",
+    "bindings": {
+      "space f f": "file_finder::Toggle",
+      "space e": "project_panel::ToggleFocus",
+      "space g g": "git_panel::ToggleFocus",
+      "space a a": "agent::ToggleFocus"
+    }
+  },
+
+  // === GIT CONTEXTS ===
+  {
+    "context": "GitDiff > Editor",
+    "bindings": {
+      "space g r": "git::Restore",
+      "space g x": "git::ToggleStaged",
+      "space g s": "git::StageAll",
+      "space g u": "git::UnstageAll"
+    }
+  },
+  {
+    "context": "GitPanel && ChangesList",
+    "bindings": {
+      // File staging
+      "s": "git::StageFile",
+      "u": "git::UnstageFile",
+      "shift-s": "git::StageAll",
+      "shift-u": "git::UnstageAll",
+      // Navigation
+      "o": "menu::Confirm",
+      "shift-o": "menu::SecondaryConfirm",
+      "m": "git_panel::FocusEditor",
+      "r": "git::RestoreFile"
+    }
+  },
+  {
+    "context": "CommitEditor > Editor",
+    "bindings": {
+      "alt-m": "git::GenerateCommitMessage",
+      "shift-c": "git_panel::FocusChanges"
+    }
+  },
+
+  // === PROJECT PANEL CONTEXTS ===
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      // File operations
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "d": "project_panel::Delete",
+      "r": "project_panel::Rename",
+      "c": "project_panel::Copy",
+      "x": "project_panel::Cut",
+      "p": "project_panel::Paste",
+      // Search
+      "/": "project_panel::NewSearchInDirectory"
+    }
+  },
+
+  // === PANEL CONTEXTS ===
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl j k": ["terminal::SendKeystroke", "escape"],
+      "ctrl t b": "tab_switcher::Toggle",
+      "ctrl t t": "terminal_panel::ToggleFocus"
+    }
+  },
+
+{
+  "context": "AgentPanel",
+    "bindings": {
+      "ctrl a h": "agent::OpenHistory",
+      "ctrl a a": "agent::ToggleFocus",
+      "ctrl a c": "agent::ToggleContextPicker",
+      "ctrl a c r": "agent::RemoveAllContext"
+    }
+  },
+
+  {
+    "context": "BufferSearchBar || ProjectSearchBar",
+    "bindings": {
+      "ctrl c": "search::ToggleCaseSensitive",
+      "ctrl w": "search::ToggleWholeWord",
+      "ctrl r": "search::ToggleRegex"
+    }
+  },
+
+  {
+    "context": "TabSwitcher",
+    "bindings": {
+      "w": "tab_switcher::CloseSelectedItem"
+    }
+  }
+]
